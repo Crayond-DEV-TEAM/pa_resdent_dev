@@ -27,9 +27,9 @@ end
 
 use_modular_headers! 
 
-target 'pa_resident_dev' do
+target 'pa_resdent_dev' do
   config = use_native_modules!
-  pod 'FirebaseCoreInternal', :modular_headers => true
+
   # Flags change depending on the env values.
   flags = get_default_flags()
 
@@ -47,7 +47,7 @@ target 'pa_resident_dev' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'pa_resident_devTests' do
+  target 'pa_resdent_devTests' do
     inherit! :complete
     # Pods for testing
   end
