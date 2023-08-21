@@ -1,3 +1,6 @@
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+require_relative '../node_modules/react-native/scripts/react_native_pods'
+
 # Resolve react_native_pods.rb with node to allow for hoisting
 require Pod::Executable.execute_command('node', ['-p',
   'require.resolve(
@@ -25,11 +28,9 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
-use_modular_headers! 
-
-target 'pa_resident_dev' do
+target 'app.pa_resident_dev' do
   config = use_native_modules!
-  pod 'FirebaseCoreInternal', :modular_headers => true
+
   # Flags change depending on the env values.
   flags = get_default_flags()
 
@@ -47,7 +48,7 @@ target 'pa_resident_dev' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'pa_resident_devTests' do
+  target 'app.pa_resident_devTests' do
     inherit! :complete
     # Pods for testing
   end
